@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  database: stupid_cupid_development
+
+test:
+  adapter: postgresql
+  database: stupid_cupid_test
+
+
