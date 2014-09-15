@@ -21,6 +21,10 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answer = Answer.new
+    # if @question.answers != nil
+    #   @answers = @question.answers
+    # end
   end
 
   def edit
@@ -38,18 +42,15 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     @question = Question.find(params[:id])
-    question.destroy
+    @question.destroy
     flash[:notice] = "Question deleted."
     redirect_to questions_path
   end
 
 private
   def question_params
-    params.require(:question).permit(:content, :user_id).merge(:user_id => current_user.id)
+    params.require(:question).permit(:content, :title, :user_id).merge(:user_id => current_user.id)
   end
-
-
-end
 end
