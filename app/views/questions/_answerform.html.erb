@@ -1,8 +1,0 @@
-<%= form_for [@question, @answer] do |f| %>
-  <div class="form-group">
-    <%= f.label "Answer" %>
-    <%= f.text_area :content, cols: 50, rows: 10 %>
-  </div>
-  <%= f.hidden_field :question_id, :value => @question.id %>
-  <%= f.submit(:class => "btn btn-primary") %>
-<% end %>
