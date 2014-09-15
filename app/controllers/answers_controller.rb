@@ -5,13 +5,13 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.create(answer_params)
-    @question = Question.find(parans[:question_id])
+    @question = Question.find(params[:question_id])
     if @answer.valid?
       flash[:notice] = "Answer has been submitted"
       redirect_to question_path(@question)
     else
       flash[:alert] = "Answer not submitted"
-      render 'new'
+      redirect_to question_path(@question)
     end
   end
 
@@ -41,4 +41,5 @@ class AnswersController < ApplicationController
 private
   def answer_params
     params.require(:answer).permit(:user_id, :question_id, :content).merge(:user_id => current_user.id)
+  end
 end
