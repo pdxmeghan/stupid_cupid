@@ -1,6 +1,11 @@
 class AnswersController < ApplicationController
   def new
     @answer = Answer.new
+    @question = Question.find(params[:question_id])
+    respond_to do |format|
+      format.html { redirect_to question_answers_path }
+      format.js
+    end
   end
 
   def create
