@@ -13,7 +13,10 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     if @answer.valid?
       flash[:notice] = "Answer has been submitted"
-      redirect_to question_path(@question)
+      respond_to do |format|
+        format.html {redirect_to question_path(@question) }
+        format.js
+      end
     else
       flash[:alert] = "Answer not submitted"
       redirect_to question_path(@question)

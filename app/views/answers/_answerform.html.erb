@@ -1,3 +1,4 @@
+<div id="answer_form">
 <%= form_for [@question, @answer], remote: true do |f| %>
   <div class="form-group">
     <%= f.label "Answer" %>
@@ -6,3 +7,4 @@
   <%= f.hidden_field :question_id, :value => @question.id %>
   <%= f.submit(:class => "btn btn-primary") %>
 <% end %>
+</div>
