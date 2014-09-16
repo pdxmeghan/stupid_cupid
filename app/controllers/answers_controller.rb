@@ -24,7 +24,12 @@ class AnswersController < ApplicationController
   end
 
   def edit
+    @question = Question.find(params[:question_id])
     @answer = Answer.find(params[:id])
+    respond_to do |format|
+      format.html { redirect_to question_path(@question) }
+      format.js
+    end
   end
 
   def update
@@ -32,7 +37,10 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     if @answer.update(answer_params)
       flash[:notice] = "Answer updated."
-      redirect_to question_path(@question)
+      respond_to do |format|
+        format.html { redirect_to question_path(@question) }
+        format.js
+      end
     else
       flash[:alert] = "Answer not updated."
       render 'edit'
@@ -43,7 +51,10 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     @answer.destroy
     flash[:notice] = "Answer deleted"
-    redirect_to questions_path
+      respond_to do |format|
+      format.html {  redirect_to questions_path }
+      format.js
+    end
   end
 
 private
