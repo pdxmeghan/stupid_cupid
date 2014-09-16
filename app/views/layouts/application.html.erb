@@ -7,6 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <form class="navbar-form navbar-left" role="search" action="/questions" method="get">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search" name="query">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+
+
   <% if current_user %>
    Logged in as <%= link_to current_user.name, user_path(current_user) %> |
     <%= link_to "Query", new_question_path %> |

@@ -57,6 +57,23 @@ class AnswersController < ApplicationController
     end
   end
 
+   def library
+    if params[:query]
+      @recipes = []
+      @recipes << Recipe.basic_search(params[:query])
+      @recipes << Tag.basic_search(params[:query])
+      @recipes = @recipes.flatten.uniq
+      respond_to do |format|
+        format.html {questions_path}
+        format.js
+      end
+    else
+      @recipes = Recipe.all
+      @tags = Tag.all
+      render('recipes/lib.html.erb')
+    end
+  end
+
 private
   def answer_params
     params.require(:answer).permit(:user_id, :question_id, :content).merge(:user_id => current_user.id)
