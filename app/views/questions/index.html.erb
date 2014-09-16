@@ -1,7 +1,12 @@
 <h1>STUPID CUPID</h1>
 
-<ul>
-  <% @questions.each do |question| %>
-    <li><%= link_to question.title, question_path(question) %></li>
-  <% end %>
-</ul>
+<div id="question_list">
+  <ul>
+     <%= render @questions %>
+  </ul>
+</div>
+
+  <div id="question">
+    <%= link_to "Ask a Question", new_question_path, id: "ask_question", remote: true%>
+  </div>
+

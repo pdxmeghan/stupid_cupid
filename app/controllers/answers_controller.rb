@@ -27,7 +27,7 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = Answer.find(params[:id])
     respond_to do |format|
-      format.html { redirect_to question_path(@question) }
+      format.html { redirect_to edit_question_path(@question) }
       format.js
     end
   end

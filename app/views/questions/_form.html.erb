@@ -1,5 +1,5 @@
-
-<%= form_for(@question) do |f| %>
+<div id="question_form">
+<%= form_for @question, remote: true do |f| %>
   <div class="form-group">
     <%= f.label "Title" %>
     <%= f.text_field :title %>
@@ -8,5 +8,6 @@
     <%= f.label "Question" %>
     <%= f.text_area :content, cols: 50, rows: 10 %>
   </div>
-  <%= f.submit(:class => "btn btn-primary") %>
+  <%= f.submit(:class => "btn btn-primary", :id => "new_question") %>
 <% end %>
+</div>

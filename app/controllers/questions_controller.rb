@@ -6,13 +6,20 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    respond_to do |format|
+      format.html { redirect_to questions_path }
+      format.js
+    end
   end
 
   def create
     @question = Question.create(question_params)
     if @question.valid?
       flash[:notice] = "Question submitted."
-      redirect_to question_path(@question)
+      respond_to do |format|
+        format.html { redirect_to question_path(@question) }
+        format.js
+      end
     else
       flash[:alert] = "Question not submitted."
       render 'new'
@@ -29,13 +36,20 @@ class QuestionsController < ApplicationController
 
   def edit
     @question = Question.find(params[:id])
+    respond_to do |format|
+      format.html {redirect_to question_path(@question)}
+      format.js
+    end
   end
 
   def update
     @question = Question.find(params[:id])
     if @question.update(question_params)
       flash[:notice] = "Question updated."
-      redirect_to question_path(@question)
+      respond_to do |format|
+        format.html { redirect_to question_path(@question) }
+        format.js
+      end
     else
       flash[:alert] = "Question not updated."
       render 'edit'
