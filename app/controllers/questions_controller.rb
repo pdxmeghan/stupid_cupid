@@ -29,9 +29,6 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answer = Answer.new
-    # if @question.answers != nil
-    #   @answers = @question.answers
-    # end
   end
 
   def edit

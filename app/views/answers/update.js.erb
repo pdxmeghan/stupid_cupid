@@ -1,1 +1,7 @@
 $(".answer_<%= @answer.id %>").html("<%= j render @answer %>");
+$(function() {
+  $('.favorite_task').submit(function() {
+    alert('hey yo!');
+  });
+});
+

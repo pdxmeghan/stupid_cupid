@@ -1,11 +1,13 @@
 <div class="answer_<%= answer.id %>">
   <li><%= answer.content %></li>
-  <% if current_user %>
-    <% if current_user.id == answer.user_id %>
+  <% if current_user && current_user.id == answer.question.user_id %>
+     <%= render 'answers/button', answer: answer %>
+  <% end %>
+
+  <% if current_user.id == answer.user_id %>
     <%= link_to "(edit)", edit_question_answer_path(@question, answer), :id => "edit_question_answer_#{answer.id}", remote: true %>
     <%= link_to "(remove)", question_answer_path(@question, answer), :id => "question_answer_#{answer.id}",
                                                                      method: :delete, data: {confirm: "Are you sure?"},
                                                                      remote: true %>
-    <% end %>
   <% end %>
 </div>

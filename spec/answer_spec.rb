@@ -6,4 +6,5 @@ require 'rails_helper'
     it {should validate_presence_of :question_id}
     it {should belong_to :question}
     it {should belong_to :user}
+    it {should have_one :favorite}
 end
