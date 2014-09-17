@@ -1,11 +1,7 @@
 class QuestionsController < ApplicationController
 
   def index
-    if params[:query]
-      @questions = Question.basic_search(params[:query])
-    else
-      @questions = Question.all
-    end
+    @questions = Question.all
   end
 
   def new

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions
+  resources :searches
   resources :questions do
     resources :answers
   end
